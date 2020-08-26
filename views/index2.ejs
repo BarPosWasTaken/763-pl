@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>763.pl » 404</title>
+    <title>763.pl » Free URL Shortner 🧁</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style>
         body{
             background: #34495E;
@@ -88,12 +89,20 @@
     </style>
 </head>
 <body>
-    <div class="centered"><center>
-        <img src="https://i.imgur.com/6xeQ77P.png" alt=""><br>
-        <img src="https://i.imgur.com/sXnY54H.png" alt="" style="transform: scale(.5);"><br>
-        <a href="/">
-            <img src="https://i.imgur.com/9rZVK7I.png" alt="" style="transform: scale(.5);">
-        </a>
+    <div class="centered">
+        <img src="https://i.imgur.com/sXnY54H.png" alt="">
+        
+        <form action="/url" method="POST" class="">
+            <label for="fullUrl" class="sr-only">URL</label>
+            <input type="url" name="fullUrl" id="fullUrl" placeholder="URL" required class="input" value="
+            
+            <% if(created != '') { %>
+                http://763.pl/<%= created %>
+            <% } %>
+
+            "><br>
+            <button type="submit" class="btn create">Create</button>
+        </form>
     </div>
 </body>
 </html>

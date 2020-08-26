@@ -1,7 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const https = require('https'); 
+var session = require('express-session');
+const shortid = require('shortid');
+const fs = require('fs');
 const ShortUrl = require('./models/shortUrl');
 const app = express();
+
+var key = fs.readFileSync('/etc/letsencrypt/live/763.pl' + '/privkey.pem');
+var cert = fs.readFileSync('/etc/letsencrypt/live/763.pl' + '/fullchain.pem');
+var options = {
+  key: key,
+  cert: cert
+};
 
 require('dotenv').config();
 
@@ -11,15 +22,24 @@ mongoose.connect('mongodb://localhost/763-pl', {
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
+app.use(session({secret: "jsncnd29u3-8989niun-c3nc9uiwnc9-nciw9nciu-jw9ius"}));
 
 // Index file 🛠
 app.get('/', async (req, res) => {
+    req.session.created = req.session.created;
+    if(req.session.created === null){
+        req.session.created = '';
+    }
+    const created = req.session.created;
     const shortUrls = await ShortUrl.find();
-    res.render('index', { shortUrls: shortUrls })
+    res.render('index2', { shortUrls: shortUrls, created: created })
+    req.session.created = '';
 });
 
 app.post('/url', async (req, res) => {
-    await ShortUrl.create({ url: req.body.fullUrl });
+    var u = shortid.generate();
+    await ShortUrl.create({ url: req.body.fullUrl, short: u });
+    req.session.created = u;
     res.redirect('/');
 });
 
@@ -36,4 +56,8 @@ app.get('/:shortUrl', async (req, res) => {
     res.redirect(shortUrl.url);
 });
 
-app.listen(process.env.PORT || 5000);
+var server = https.createServer(options, app);
+
+server.listen(process.env.PORT || 5000, () => {
+    console.log("server starting on port : " + port)
+  });
