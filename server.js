@@ -1,18 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const https = require('https'); 
+const url = require('url'); 
 var session = require('express-session');
 const shortid = require('shortid');
-const fs = require('fs');
 const ShortUrl = require('./models/shortUrl');
 const app = express();
-
-var key = fs.readFileSync('/etc/letsencrypt/live/763.pl' + '/privkey.pem');
-var cert = fs.readFileSync('/etc/letsencrypt/live/763.pl' + '/fullchain.pem');
-var options = {
-  key: key,
-  cert: cert
-};
 
 require('dotenv').config();
 
@@ -56,8 +48,4 @@ app.get('/:shortUrl', async (req, res) => {
     res.redirect(shortUrl.url);
 });
 
-var server = https.createServer(options, app);
-
-server.listen(process.env.PORT || 5000, () => {
-    console.log("server starting on port : " + port)
-  });
+app.listen(process.env.PORT || 5000);
