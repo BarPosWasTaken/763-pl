@@ -68,7 +68,7 @@ Open `config/settings.json` and change the chosen values:
 
 * Choose short url length.
 
-`Change generated id leangth in .env`
+`Change generated id length in .env`
 
 ---
 
