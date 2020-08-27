@@ -24,7 +24,7 @@ app.get('/', async (req, res) => {
     }
     const created = req.session.created;
     const shortUrls = await ShortUrl.find();
-    res.render('index2', { shortUrls: shortUrls, created: created })
+    res.render('index', { shortUrls: shortUrls, created: created })
     req.session.created = '';
 });
 
@@ -33,6 +33,11 @@ app.post('/url', async (req, res) => {
     await ShortUrl.create({ url: req.body.fullUrl, short: u });
     req.session.created = u;
     res.redirect('/');
+});
+
+app.get('/urls', async (req, res) => {
+    const shortUrls = await ShortUrl.find();
+    res.render('urls', { shortUrls: shortUrls })
 });
 
 app.get('/:shortUrl', async (req, res) => {

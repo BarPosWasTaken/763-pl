@@ -1,6 +1,6 @@
 {
   "name": "763-pl",
-  "version": "0.0.1",
+  "version": "0.4.3",
   "description": "Free URL Shortner",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "dev": "nodemon server.js"
   },
   "author": "BarPos",
-  "license": "ISC",
+  "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
@@ -20,5 +20,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BarPosWasTaken/763-pl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BarPosWasTaken/763-pl/issues"
+  },
+  "homepage": "https://github.com/BarPosWasTaken/763-pl#readme"
 }

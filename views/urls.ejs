@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>763.pl » Free URL Shortner 🧁</title>
+    <title>763.pl » List of URLs</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style>
+        *{
+          color: white;  
+        }
+
         body{
             background: #34495E;
         }
         .centered{
+            padding-top: 10px;
+            padding-bottom: 10px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -86,7 +92,6 @@
             margin-bottom: 1rem;
             text-align: center;
         }
-
         .copyright{
             position: fixed;
             bottom: 0;
@@ -105,20 +110,29 @@
     </style>
 </head>
 <body>
-    <div class="centered">
-        <img src="https://i.imgur.com/sXnY54H.png" alt="">
-        
-        <form action="/url" method="POST" class="">
-            <label for="fullUrl" class="sr-only">URL</label>
-            <input type="url" name="fullUrl" id="fullUrl" placeholder="URL" required class="input" value="
-            
-            <% if(created != '') { %>
-                http://763.pl/<%= created %>
-            <% } %>
-
-            "><br>
-            <button type="submit" class="btn create">Create</button>
-        </form>
+    <div class="centered"><center>
+        <img src="https://i.imgur.com/sXnY54H.png" alt=""><br>
+        <a href="/">
+            <img src="https://i.imgur.com/9rZVK7I.png" alt="" style="transform: scale(.3);">
+        </a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>Short URL</th>
+                    <th>Clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% shortUrls.reverse().forEach(s => { %>
+                    <tr>
+                        <td><a href="<%= s.url %>" target="_blank"><%= s.url %></a></td>
+                        <td><a href="<%= s.short %>" target="_blank"><%= s.short %></a></td>
+                        <td><%= s.clicks %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
     </div>
     <div class="copyright"><span>Copyright 2020 © <a href="http://763.pl/wMvQMwacj" target="_blank">BarPos</a></span></div>
     <div class="menu" style="position: fixed; bottom: 0; right: 5px;">

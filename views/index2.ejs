@@ -5,104 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>763.pl » Free URL Shortner 🧁</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <style>
-        body{
-            background: #34495E;
-        }
-        .centered{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: fit-content;
-            height: fit-content;
-            max-width: 100vw;
-            max-height: 100vh;
-            overflow: visible;
-        }
-
-        .input {
-            box-shadow:none;
-            margin-top: 10px;
-            width: 100%;
-            font-family: inherit;
-            padding-bottom: 1rem;
-            background: none;
-            border: none;
-            color: #ffffff;
-            border-bottom: 2px solid #ffffff;
-            text-align: center;
-            font-size: 1.25rem;
-            transition: border-bottom-color 0.3s ease-in-out;
-            caret-color: #3498DB;
-        }
-
-        .input:focus {
-            outline: none;
-            border-bottom-color: #3498DB;
-        }
-
-        .input::placeholder {
-            color: #ffffff;
-            opacity: 0.7;
-        }
-
-        .input,
-        .create {
-            margin: 1rem 0;
-            max-width: 100%;
-        }
-        .create {
-            width: 100%;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 1.15rem;
-            color: #fff;
-            border: none;
-            background-color: #3498DB;
-            padding: 0.75em 1.25rem;
-            box-shadow: 3px 3px 0 0 #ffffff;
-            transition: box-shadow 0.2s ease-in-out;
-        }
-
-        .create:hover {
-            box-shadow: 0 0 0 0 #ffffff;
-        }
-
-        .created {
-            color: #ffffff;
-            text-align: center;
-        }
-
-        .created a {
-            color: inherit;
-        }
-
-
-        .error {
-            background: #A63446;
-            padding: 0.5rem 1rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
-    <div class="centered">
-        <img src="https://i.imgur.com/sXnY54H.png" alt="">
-        
-        <form action="/url" method="POST" class="">
+    <div class="container">
+        <h1>763.pl » Free URL Shortner</h1>
+        <form action="/url" method="POST" class="my-4 form-inline">
             <label for="fullUrl" class="sr-only">URL</label>
-            <input type="url" name="fullUrl" id="fullUrl" placeholder="URL" required class="input" value="
-            
-            <% if(created != '') { %>
-                http://763.pl/<%= created %>
-            <% } %>
-
-            "><br>
-            <button type="submit" class="btn create">Create</button>
+            <input type="url" name="fullUrl" id="fullUrl" placeholder="URL" required class="form-control col mr-2">
+            <button type="submit" class="btn btn-success">Create</button>
         </form>
+
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>Short URL</th>
+                    <th>Clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% shortUrls.forEach(shortUrl => { %>
+                    <tr>
+                        <td><a href="<%= shortUrl.url %>" target="_blank"><%= shortUrl.url %></a></td>
+                        <td><a href="<%= shortUrl.short %>" target="_blank"><%= shortUrl.short %></a></td>
+                        <td><%= shortUrl.clicks %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
