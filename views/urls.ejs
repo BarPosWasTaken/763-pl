@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>763.pl » List of URLs</title>
+    <title><%= settings.title %> » List of URLs</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style>
         *{
@@ -11,7 +11,7 @@
         }
 
         body{
-            background: #34495E;
+            background: <%= settings.colors.background %>;
         }
         .centered{
             padding-top: 10px;
@@ -40,12 +40,12 @@
             text-align: center;
             font-size: 1.25rem;
             transition: border-bottom-color 0.3s ease-in-out;
-            caret-color: #3498DB;
+            caret-color: <%= settings.colors.main %>;
         }
 
         .input:focus {
             outline: none;
-            border-bottom-color: #3498DB;
+            border-bottom-color: <%= settings.colors.main %>;
         }
 
         .input::placeholder {
@@ -65,7 +65,7 @@
             font-size: 1.15rem;
             color: #fff;
             border: none;
-            background-color: #3498DB;
+            background-color: <%= settings.colors.main %>;
             padding: 0.75em 1.25rem;
             box-shadow: 3px 3px 0 0 #ffffff;
             transition: box-shadow 0.2s ease-in-out;
@@ -111,9 +111,9 @@
 </head>
 <body>
     <div class="centered"><center>
-        <img src="https://i.imgur.com/sXnY54H.png" alt=""><br>
+        <img src="<%= settings.images.logo %>" alt=""><br>
         <a href="/">
-            <img src="https://i.imgur.com/9rZVK7I.png" alt="" style="transform: scale(.3);">
+            <img src="<%= settings.images.backarrow %>" alt="" style="transform: scale(.3);">
         </a>
         <table class="table table-striped">
             <thead>
@@ -136,9 +136,13 @@
     </div>
     <div class="copyright"><span>Copyright 2020 © <a href="http://763.pl/wMvQMwacj" target="_blank">BarPos</a></span></div>
     <div class="menu" style="position: fixed; bottom: 0; right: 5px;">
-        <a href="/">Home</a>&nbsp;<span style="color: white;">·</span>&nbsp;
-        <a href="/urls">Urls</a>&nbsp;<span style="color: white;">·</span>&nbsp;
-        <a href="http://763.pl/aft2aR9EP" target="_blank">Donate</a>
+        <% for (let i = 0; i < menu.length; i++) { %>
+            <% if (i == menu.length - 1) { %>
+                <a href="<%= menu[i].url %>" target="<%= menu[i].target %>"><%= menu[i].name %></a>
+            <% } else { %>
+                <a href="<%= menu[i].url %>" target="<%= menu[i].target %>"><%= menu[i].name %></a>&nbsp;<span style="color: white;">·</span>&nbsp;
+            <% } %>
+        <% } %>
     </div>
 </body>
 </html>
