@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const url = require('url'); 
 var session = require('express-session');
-const shortid = require('shortid');
+const shortid = require('./id');
 const ShortUrl = require('./models/shortUrl');
 const app = express();
 
