@@ -1,4 +1,4 @@
-![logo](https://i.imgur.com/sXnY54H.png)
+![logo](https://i.imgur.com/DEZnz6h.png)
 # 🍔 [763.pl](https://github.com/BarPosWasTaken/763-pl) 0.6.5 (Free URL Shortner)
 > This is Source Code, if you want tu use [763.pl](https://github.com/BarPosWasTaken/763-pl) go here: [http://763.pl](http://763.pl)
 
