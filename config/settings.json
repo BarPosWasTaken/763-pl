@@ -12,7 +12,8 @@
     },
     "menu":[
         {"name":"Home", "url":"/", "target":""},
-        {"name":"Urls", "url":"/urls", "target":"_blank"},
+        {"name":"Urls", "url":"/urls", "target":""},
+        
         {"name":"Donate", "url":"http://763.pl/aft2aR9EP", "target":"_blank"}
     ]
 }
