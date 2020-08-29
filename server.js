@@ -213,10 +213,10 @@ app.get('/:shortUrl', async (req, res) => {
         return;
     }
 
+    res.render('red', { url: shortUrl, menu: menu, settings: settings});
+
     shortUrl.clicks++;
     shortUrl.save();
-
-    res.redirect(shortUrl.url);
 });
 
 

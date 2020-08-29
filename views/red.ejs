@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= settings.title %> » Redirect</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        .top{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 120px;
+            overflow: auto;
+        }
+        .bottom{
+            position: fixed;
+            top: 120px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+        }
+        img{
+            height: 100px;
+            margin: 10px;
+        }
+        p{
+            color: white;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+        body{
+            background: <%= settings.colors.background %>;
+        }
+        .centered{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: fit-content;
+            height: fit-content;
+            max-width: 100vw;
+            max-height: 100vh;
+            overflow: visible;
+        }
+
+        .input {
+            box-shadow:none;
+            margin-top: 10px;
+            width: 100%;
+            font-family: inherit;
+            padding-bottom: 1rem;
+            background: none;
+            border: none;
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+            text-align: center;
+            font-size: 1.25rem;
+            transition: border-bottom-color 0.3s ease-in-out;
+            caret-color: <%= settings.colors.main %>;
+        }
+
+        .input:focus {
+            outline: none;
+            border-bottom-color: <%= settings.colors.main %>;
+        }
+
+        .input::placeholder {
+            color: #ffffff;
+            opacity: 0.7;
+        }
+
+        .input,
+        .create {
+            margin: 1rem 0;
+            max-width: 100%;
+        }
+        .create {
+            width: 100%;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1.15rem;
+            color: #fff;
+            border: none;
+            background-color: <%= settings.colors.main %>;
+            padding: 0.75em 1.25rem;
+            box-shadow: 3px 3px 0 0 #ffffff;
+            transition: box-shadow 0.2s ease-in-out;
+        }
+
+        .create:hover {
+            box-shadow: 0 0 0 0 #ffffff;
+            color: #fff;
+        }
+
+        .created {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .created a {
+            color: inherit;
+        }
+
+
+        .error {
+            background: #A63446;
+            padding: 0.5rem 1rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .copyright{
+            position: fixed;
+            top: 0;
+            left: 210px;
+            color: white;
+            z-index: 9999;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        a:hover{
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <img src="<%= settings.images.logo %>" alt="">
+
+        <p>Please wait <%= Math.floor(settings.time/1000) %> secconds.</p>
+        
+        <script>
+            setTimeout(function(){
+                window.location.href = '<%= url.url %>'
+            }, <%= settings.time %>)
+        </script>
+    </div>
+    <div class="bottom">
+        <% 
+            
+            urls = [
+                'http://www.barpos.net',
+                'http://www.barpos.net/donate/',
+                'http://www.barpos.net/763-pl-free-url-shortner-%f0%9f%a7%81/'
+            ];
+
+        %>
+
+        <iframe src="<%= urls[Math.floor(Math.random() * urls.length)]; %>" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+    <div class="copyright"><span>Copyright 2020 © <a href="http://763.pl/wMvQMwacj" target="_blank">BarPos</a></span></div>
+    <div class="menu" style="position: fixed; top: 0; right: 5px;">
+        <% for (let i = 0; i < menu.length; i++) { %>
+            <% if (i == menu.length - 1) { %>
+                <a href="<%= menu[i].url %>" target="<%= menu[i].target %>"><%= menu[i].name %></a>
+            <% } else { %>
+                <a href="<%= menu[i].url %>" target="<%= menu[i].target %>"><%= menu[i].name %></a>&nbsp;<span style="color: white;">·</span>&nbsp;
+            <% } %>
+        <% } %>
+</body>
+</html>

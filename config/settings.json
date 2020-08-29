@@ -1,6 +1,7 @@
 {
   "title": "763.pl",
   "url": "http://763.pl/",
+  "time":5000,
   "images": {
     "logo": "https://i.imgur.com/DEZnz6h.png",
     "fzf": "https://i.imgur.com/zsYD2OB.png",
@@ -35,5 +36,8 @@
   "admin": {
     "login": "admin",
     "password": "1234"
-  }
+  },
+  "ads":[
+    {"url":"http://www.barpos.net"}
+  ]
 }

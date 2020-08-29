@@ -1,6 +1,6 @@
 {
   "name": "763-pl",
-  "version": "0.7.5",
+  "version": "0.8.1",
   "description": "Free URL Shortner",
   "main": "index.js",
   "scripts": {

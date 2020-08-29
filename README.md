@@ -1,5 +1,5 @@
 ![logo](https://i.imgur.com/DEZnz6h.png)
-# 🍔 [763.pl](https://github.com/BarPosWasTaken/763-pl) 0.7.5 (Free URL Shortner)
+# 🍔 [763.pl](https://github.com/BarPosWasTaken/763-pl) 0.8.1 (Free URL Shortner)
 > This is Source Code, if you want tu use [763.pl](https://github.com/BarPosWasTaken/763-pl) go here: [http://763.pl](http://763.pl)
 
 ---
@@ -40,6 +40,7 @@ Open `config/settings.json` and change the chosen values:
 {
   "title": "763.pl",
   "url": "http://763.pl/",
+  "time":5000,
   "images": {
     "logo": "https://i.imgur.com/DEZnz6h.png",
     "fzf": "https://i.imgur.com/zsYD2OB.png",
@@ -77,6 +78,8 @@ Open `config/settings.json` and change the chosen values:
   }
 }
 ```
+
+> Note: Time says how much time user must wait (in ms) before going.
 
 ---
 
