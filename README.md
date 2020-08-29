@@ -1,5 +1,5 @@
 ![logo](https://i.imgur.com/DEZnz6h.png)
-# 🍔 [763.pl](https://github.com/BarPosWasTaken/763-pl) 0.6.5 (Free URL Shortner)
+# 🍔 [763.pl](https://github.com/BarPosWasTaken/763-pl) 0.7.5 (Free URL Shortner)
 > This is Source Code, if you want tu use [763.pl](https://github.com/BarPosWasTaken/763-pl) go here: [http://763.pl](http://763.pl)
 
 ---
@@ -7,6 +7,7 @@
 ## Requirements
 
 1. Node.js v12.0.0 or newer
+2. MongoDB running on `mongodb://localhost`
 
 ---
 
@@ -37,22 +38,43 @@ Open `config/settings.json` and change the chosen values:
 
 ```json
 {
-    "title": "[TITLE example: 763.pl]",
-    "url": "[URL example: http://762.pl/ <- slash at the end is required!]",
-    "images": {
-        "logo": "[SITE LOGO example: https://i.imgur.com/DEZnz6h.png]",
-        "fzf": "[404 IMAGE example: https://i.imgur.com/zsYD2OB.png]",
-        "backarrow": "[BACK-ARROW example: https://i.imgur.com/55OF6HE.png]"
+  "title": "763.pl",
+  "url": "http://763.pl/",
+  "images": {
+    "logo": "https://i.imgur.com/DEZnz6h.png",
+    "fzf": "https://i.imgur.com/zsYD2OB.png",
+    "backarrow": "https://i.imgur.com/55OF6HE.png"
+  },
+  "colors": {
+    "main": "#3498DB",
+    "background": "#34495E"
+  },
+  "menu": [
+    {
+      "name": "Home",
+      "url": "/",
+      "target": ""
     },
-    "colors":{
-        "main":"[MAIN COLOR recommended bright color]",
-        "background":"[BACKGROUND COLOR recommended dark color]"
+    {
+      "name": "Urls",
+      "url": "/urls",
+      "target": ""
     },
-    "menu":[
-        {"name":"Home", "url":"/", "target":""},
-        {"name":"Urls", "url":"/urls", "target":""},
-        {"name":"Donate", "url":"http://763.pl/aft2aR9EP", "target":"_blank"}
-    ]
+    {
+      "name": "Admin Login",
+      "url": "/admin",
+      "target": ""
+    },
+    {
+      "name": "Donate",
+      "url": "http://763.pl/aft2aR9EP",
+      "target": "_blank"
+    }
+  ],
+  "admin": {
+    "login": "admin",
+    "password": "1234"
+  }
 }
 ```
 
@@ -69,6 +91,14 @@ Open `config/settings.json` and change the chosen values:
 * Choose short url length.
 
 `Change generated id length in .env`
+
+* In-app settings menu.
+
+`Go to /admin for login panel`
+
+* Menage links.
+
+`Go to /admin/db`
 
 ---
 

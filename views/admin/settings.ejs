@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= settings.title %> » Settings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        span{
+            color: white;
+        }
+        label{
+            color: white;
+        }
+        body{
+            background: <%= settings.colors.background %>;
+        }
+        .centered{
+            position: absolute;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: fit-content;
+            height: fit-content;
+            max-width: 100vw;
+            max-height: 100vh;
+            overflow: visible;
+        }
+
+        .input {
+            box-shadow:none;
+            margin-top: 10px;
+            width: 100%;
+            font-family: inherit;
+            padding-bottom: 1rem;
+            background: none;
+            border: none;
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+            text-align: center;
+            font-size: 1.25rem;
+            transition: border-bottom-color 0.3s ease-in-out;
+            caret-color: <%= settings.colors.main %>;
+        }
+
+        .input:focus {
+            outline: none;
+            border-bottom-color: <%= settings.colors.main %>;
+        }
+
+        .input::placeholder {
+            color: #ffffff;
+            opacity: 0.7;
+        }
+
+        .input,
+        .create {
+            margin: 1rem 0;
+            max-width: 100%;
+        }
+        .create {
+            width: 100%;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1.15rem;
+            color: #fff;
+            border: none;
+            background-color: <%= settings.colors.main %>;
+            padding: 0.75em 1.25rem;
+            box-shadow: 3px 3px 0 0 #ffffff;
+            transition: box-shadow 0.2s ease-in-out;
+        }
+
+        .create:hover {
+            box-shadow: 0 0 0 0 #ffffff;
+            color: #fff;
+        }
+
+        .created {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .created a {
+            color: inherit;
+        }
+
+
+        .error {
+            background: #A63446;
+            padding: 0.5rem 1rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .copyright{
+            position: fixed;
+            bottom: 0;
+            left: 5px;
+            color: white;
+            z-index: 9999;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        a:hover{
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered"><center>
+        <img src="<%= settings.images.logo %>" alt=""><br>
+
+        <a href="/admin">← Back</a><br>
+        <br>
+
+        <form action="/sett" method="post">
+            <label for="title" class="">Title</label>
+            <input type="text" name="title" id="title" placeholder="Title" class="input" value="<%= settings.title %>"><br>
+
+            <label for="url" class="">Url</label>
+            <input type="url" name="url" id="url" placeholder="Url" class="input" value="<%= settings.url %>"><br>
+
+            <label for="logo" class="">Logo</label>
+            <input type="url" name="logo" id="logo" placeholder="Logo" class="input" value="<%= settings.images.logo %>"><br>
+
+            <label for="fzf" class="">404 Image</label>
+            <input type="url" name="fzf" id="fzf" placeholder="404 Image" class="input" value="<%= settings.images.fzf %>"><br>
+
+            <label for="main" class="">Main Color</label>
+            <input type="text" name="main" id="main" placeholder="Main Color" class="input" value="<%= settings.colors.main %>"><br>
+
+            <label for="background" class="">Backfround Color</label>
+            <input type="text" name="background" id="background" placeholder="Background Color" class="input" value="<%= settings.colors.background %>"><br>
+
+            <span>To change menu or admin login,<br> you need to open 'config/settings.json', change it<br> and restart server :( Sorry</span>
+        
+            <button type="submit" class="btn create">Save</button>
+        </form>
+        
+
+
+
+    </div>
+    <div class="copyright"><span>Copyright 2020 © <a href="http://763.pl/wMvQMwacj" target="_blank">BarPos</a></span></div>
+    <div class="menu" style="position: fixed; bottom: 0; right: 5px;">
+        <% for (let i = 0; i < menu.length; i++) { %>
+            <% if (i == menu.length - 1) { %>
+                <a href="<%= menu[i].url %>" target="<%= menu[i].target %>"><%= menu[i].name %></a>
+            <% } else { %>
+                <a href="<%= menu[i].url %>" target="<%= menu[i].target %>"><%= menu[i].name %></a>&nbsp;<span style="color: white;">·</span>&nbsp;
+            <% } %>
+        <% } %>
+</body>
+</html>

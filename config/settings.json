@@ -1,19 +1,39 @@
 {
-    "title": "763.pl",
-    "url": "http://763.pl/",
-    "images": {
-        "logo": "https://i.imgur.com/DEZnz6h.png",
-        "fzf": "https://i.imgur.com/zsYD2OB.png",
-        "backarrow": "https://i.imgur.com/55OF6HE.png"
+  "title": "763.pl",
+  "url": "http://763.pl/",
+  "images": {
+    "logo": "https://i.imgur.com/DEZnz6h.png",
+    "fzf": "https://i.imgur.com/zsYD2OB.png",
+    "backarrow": "https://i.imgur.com/55OF6HE.png"
+  },
+  "colors": {
+    "main": "#3498DB",
+    "background": "#34495E"
+  },
+  "menu": [
+    {
+      "name": "Home",
+      "url": "/",
+      "target": ""
     },
-    "colors":{
-        "main":"#3498DB",
-        "background":"#34495E"
+    {
+      "name": "Urls",
+      "url": "/urls",
+      "target": ""
     },
-    "menu":[
-        {"name":"Home", "url":"/", "target":""},
-        {"name":"Urls", "url":"/urls", "target":""},
-        
-        {"name":"Donate", "url":"http://763.pl/aft2aR9EP", "target":"_blank"}
-    ]
+    {
+      "name": "Admin Login",
+      "url": "/admin",
+      "target": ""
+    },
+    {
+      "name": "Donate",
+      "url": "http://763.pl/aft2aR9EP",
+      "target": "_blank"
+    }
+  ],
+  "admin": {
+    "login": "admin",
+    "password": "1234"
+  }
 }
